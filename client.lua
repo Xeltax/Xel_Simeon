@@ -30,7 +30,7 @@ function checkVehicle()
             local vehicle = GetVehiclePedIsIn(playerPed, false)
 
             if policePresent >= Config.minPoliceOnline then
-                if ESX.PlayerData.job.name ~= 'police' then
+                if ESX.PlayerData.job and ESX.PlayerData.job.name ~= 'police' then
                     if vehicle ~= 0 then
                         if chance <= Config.missionPercentage then
                             -- 50% de chance de trouver un véhicule
