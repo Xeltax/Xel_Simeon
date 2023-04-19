@@ -115,7 +115,7 @@ function vehicleFound(vehicle, vehicleProps)
         AddTextComponentString(Config.blipName)
         EndTextCommandSetBlipName(blipMission)
 
-        local loopWait = 0
+        local loopWait = 1000
 
         while true do
             Citizen.Wait(loopWait)
