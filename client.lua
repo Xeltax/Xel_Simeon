@@ -8,7 +8,7 @@ end)
 
 local lastVehicle = nil
 local policePresent = 0
-
+local latestVehicle = ''
 
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
@@ -32,8 +32,13 @@ function checkVehicle()
             if policePresent >= Config.minPoliceOnline then
                 if ESX.PlayerData.job and ESX.PlayerData.job.name ~= 'police' then
                     if vehicle ~= 0 then
+                        if latestVehicle ~= vehicle then
+                            latestVehicle = vehicle
+                            chance = math.random(1, 100)
+                        end
+
                         if chance <= Config.missionPercentage then
-                            -- 50% de chance de trouver un véhicule
+
                             if vehicle ~= lastVehicle and lastVehicle ~= nil then
                                 -- vérifier si le véhicule différent du dernier véhicule
                                 local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)
